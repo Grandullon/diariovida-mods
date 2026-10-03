@@ -1,0 +1,27 @@
+{
+  "name": "diariovida",
+  "owner": {
+    "name": "Paco Vida",
+    "url": "https://diariovida.com"
+  },
+  "metadata": {
+    "description": "Mods gratis de diariovida.com para Claude Code"
+  },
+  "plugins": [
+    {
+      "name": "en-cristiano",
+      "source": "./plugins/en-cristiano",
+      "description": "Explica en español normal cada cosa que hace Claude"
+    },
+    {
+      "name": "mejora-prompts",
+      "source": "./plugins/mejora-prompts",
+      "description": "/mejora: de una frase a un prompt que funciona a la primera"
+    },
+    {
+      "name": "modo-grabacion",
+      "source": "./plugins/modo-grabacion",
+      "description": "/grabar: oculta tus datos en pantalla mientras grabas"
+    }
+  ]
+}

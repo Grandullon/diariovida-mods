@@ -1,0 +1,3 @@
+{ "name": "mejora-prompts", "version": "1.0.0",
+  "description": "/mejora y una frase: Claude te hace 3-5 preguntas, escribe un prompt con contexto (sin rol), lo puntúa y lo corrige hasta el 9/10, con bucle o sin bucle. Método de diariovida.com.",
+  "author": { "name": "Paco Vida · diariovida.com" } }

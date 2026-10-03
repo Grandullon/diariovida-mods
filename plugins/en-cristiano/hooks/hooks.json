@@ -1,0 +1,1 @@
+{ "description": "En cristiano: traduce las acciones de Claude", "modules": ["./register.js"] }

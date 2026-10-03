@@ -1,0 +1,3 @@
+{ "name": "en-cristiano", "version": "1.0.0",
+  "description": "Debajo de cada acción de Claude, una línea en español normal que explica qué está haciendo (leer, crear, mover, borrar, buscar...). Para entender a Claude sin saber informática.",
+  "author": { "name": "Paco Vida · diariovida.com" } }

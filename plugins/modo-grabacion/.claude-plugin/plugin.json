@@ -1,0 +1,16 @@
+{
+  "name": "modo-grabacion",
+  "version": "1.0.0",
+  "description": "Modo grabación: /grabar oculta en pantalla correos, rutas de usuario, IPs, claves y los nombres que tú elijas, para grabar sin enseñar datos",
+  "author": {
+    "name": "Paco Vida · diariovida.com"
+  },
+  "userConfig": {
+    "nombres": {
+      "type": "string",
+      "title": "Nombres que quieres ocultar",
+      "description": "Tu nombre, tu ciudad, tu empresa… separados por comas",
+      "default": ""
+    }
+  }
+}

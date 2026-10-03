@@ -1,0 +1,42 @@
+# Mods gratis de Diario Vida para Claude Code
+
+Tres **mods** para que Claude Code se entienda mejor y trabaje mejor, aunque no sepas programar.
+Hechos y probados por [Paco Vida](https://www.youtube.com/@Paco_Vida) · [diariovida.com](https://diariovida.com)
+
+| Mod | Qué hace | Cómo se usa |
+|---|---|---|
+| **en-cristiano** | Debajo de cada cosa que hace Claude, una línea en español normal: «📁 Creando la carpeta "actas"», «⚠️ BORRANDO "acta.txt"», «🌐 Buscando en internet…» | Se activa solo |
+| **mejora-prompts** | Convierte una frase en un prompt que funciona a la primera: te hace 3-5 preguntas (incluida «¿con bucle o sin bucle?»), lo escribe con contexto y sin rol, lo puntúa y lo corrige | `/mejora un correo para pedir vacaciones` |
+| **modo-grabacion** | Mientras grabas la pantalla o presentas, tapa correos, rutas de usuario, IPs, DNI, claves y los nombres que tú elijas | `/grabar` (y otra vez para quitarlo) |
+
+## Requisitos
+- **Claude Code 2.1.287 o posterior** (en el terminal o en la pestaña *Code* de la app de escritorio de Claude). Compruébalo con `claude --version`.
+- Los mods **no** funcionan en el chat normal de claude.ai.
+
+## Instalar (dos líneas)
+Dentro de Claude Code escribe:
+```
+/plugin marketplace add Grandullon/diariovida-mods
+/plugin install mejora-prompts@diariovida
+```
+Cambia `mejora-prompts` por `en-cristiano` o `modo-grabacion` para instalar los otros.
+Al instalar `modo-grabacion` te pedirá los nombres que quieres ocultar (tu nombre, tu ciudad, tu empresa…), separados por comas. Puedes cambiarlos luego con `/plugin configure modo-grabacion`.
+
+Para quitar uno: `/plugin` → pestaña **Installed** → desactívalo o desinstálalo.
+
+## Antes de instalar cualquier mod (este también)
+Un mod funciona con tus permisos: puede leer tus archivos y lo que escribes. Instala solo mods de gente en la que confíes y **mira el código**: está todo en la carpeta `plugins/`, son pocas líneas y están comentadas en español.
+Si descargas la carpeta, puedes ver qué hace cada uno sin ejecutarlo:
+```
+claude plugin validate ./plugins/mejora-prompts
+```
+
+## Qué hace cada uno por dentro
+- **en-cristiano**: solo cambia lo que ves en pantalla; no toca lo que Claude hace.
+- **mejora-prompts**: añade el comando `/mejora` y le pasa a Claude las instrucciones del método (preguntar → escribir con etiquetas → puntuar → ficha). No ejecuta la tarea: te pregunta si quieres hacerlo.
+- **modo-grabacion**: solo cambia lo que ves en pantalla; Claude sigue trabajando con los datos reales.
+
+## Más recursos
+Prompts, habilidades y la newsletter gratis en **[diariovida.com](https://diariovida.com)**.
+
+Licencia MIT: úsalos, cámbialos y compártelos.

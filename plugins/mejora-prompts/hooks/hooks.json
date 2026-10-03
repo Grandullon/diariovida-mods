@@ -1,0 +1,1 @@
+{ "description": "Mejora prompts: /mejora", "modules": ["./register.js"] }
