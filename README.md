@@ -1,11 +1,12 @@
 # Mods gratis de Diario Vida para Claude Code
 
-Tres **mods** para que Claude Code se entienda mejor y trabaje mejor, aunque no sepas programar.
+Cuatro **mods** para que Claude Code se entienda mejor y trabaje mejor, aunque no sepas programar.
 Hechos y probados por [Paco Vida](https://www.youtube.com/@Paco_Vida) · [diariovida.com](https://diariovida.com)
 
 | Mod | Qué hace | Cómo se usa |
 |---|---|---|
 | **en-cristiano** | Debajo de cada cosa que hace Claude, una línea en español normal: «📁 Creando la carpeta "actas"», «⚠️ BORRANDO "acta.txt"», «🌐 Buscando en internet…» | Se activa solo |
+| **papelera** | Cuando Claude va a borrar algo, en vez de borrarlo lo manda a una papelera (`~/.papelera-claude`) para que puedas recuperarlo | Se activa solo · `/papelera` para ver qué hay |
 | **mejora-prompts** | Convierte una frase en un prompt que funciona a la primera: te hace 3-5 preguntas (incluida «¿con bucle o sin bucle?»), lo escribe con contexto y sin rol, lo puntúa y lo corrige | `/mejora un correo para pedir vacaciones` |
 | **modo-grabacion** | Mientras grabas la pantalla o presentas, tapa correos, rutas de usuario, IPs, DNI, claves y los nombres que tú elijas | `/grabar` (y otra vez para quitarlo) |
 
@@ -19,7 +20,7 @@ Dentro de Claude Code escribe:
 /plugin marketplace add Grandullon/diariovida-mods
 /plugin install mejora-prompts@diariovida
 ```
-Cambia `mejora-prompts` por `en-cristiano` o `modo-grabacion` para instalar los otros.
+Cambia `mejora-prompts` por `en-cristiano`, `papelera` o `modo-grabacion` para instalar los otros.
 Al instalar `modo-grabacion` te pedirá los nombres que quieres ocultar (tu nombre, tu ciudad, tu empresa…), separados por comas. Puedes cambiarlos luego con `/plugin configure modo-grabacion`.
 
 Para quitar uno: `/plugin` → pestaña **Installed** → desactívalo o desinstálalo.
@@ -33,6 +34,7 @@ claude plugin validate ./plugins/mejora-prompts
 
 ## Qué hace cada uno por dentro
 - **en-cristiano**: solo cambia lo que ves en pantalla; no toca lo que Claude hace.
+- **papelera**: si Claude intenta borrar con una orden sencilla, la cambia por «mover a la papelera»; si es una orden más compleja, la frena y le pide a Claude que mueva los archivos a la papelera. La papelera no se vacía sola: bórrala tú cuando quieras.
 - **mejora-prompts**: añade el comando `/mejora` y le pasa a Claude las instrucciones del método (preguntar → escribir con etiquetas → puntuar → ficha). No ejecuta la tarea: te pregunta si quieres hacerlo.
 - **modo-grabacion**: solo cambia lo que ves en pantalla; Claude sigue trabajando con los datos reales.
 

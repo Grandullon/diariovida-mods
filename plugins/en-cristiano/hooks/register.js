@@ -18,7 +18,7 @@ function terminal(cmd, desc) {
 
 function una(primera, desc) {
   const [p, ...resto] = primera.split(/\s+/)
-  const args = resto.filter(a => !a.startsWith('-'))
+  const args = resto.filter(a => !a.startsWith('-') && !/^\d?>|^&|^<|\/dev\/null|^2>/.test(a))
   const ultimo = args.length ? nombre(args[args.length - 1]) : ''
   const tabla = {
     ls: '👀 Mirando qué hay en la carpeta' + (ultimo ? ` «${ultimo}»` : ''),
@@ -74,7 +74,7 @@ export function register(on) {
   on('ui.render', { component: 'ToolUse' }, async ($, e, next) => {
     const suyo = await next(e)
     let linea
-    try { linea = traduce(e.props.tool, e.props.input) } catch { return suyo }
+    try { linea = traduce(e.props.tool, e.props.input) + (e.props.isErrored ? '   ❌ (no se hizo)' : '') } catch { return suyo }
     const { Box, Text } = $.ui.resolve(e)
     return Box({ flexDirection: 'column', children: [suyo, Text({ color: 'cyan', children: ['   ↳ ' + linea] })] })
   })
@@ -86,7 +86,7 @@ export function register(on) {
     const calls = (e.props.calls || []).slice(0, 8)
     if (!calls.length) return suyo
     const { Box, Text } = $.ui.resolve(e)
-    const lineas = calls.map((c, k) => { let t; try { t = traduce(c.tool, c.input) } catch { t = '🧰 ' + c.tool } ; return Text({ key: 'l' + k, color: 'cyan', children: ['   ↳ ' + t] }) })
+    const lineas = calls.map((c, k) => { let t; try { t = traduce(c.tool, c.input) } catch { t = '🧰 ' + c.tool } ; if (c.isErrored) t += '   ❌ (no se hizo)'; return Text({ key: 'l' + k, color: c.isErrored ? 'gray' : 'cyan', children: ['   ↳ ' + t] }) })
     return Box({ flexDirection: 'column', children: [suyo, ...lineas] })
   })
 }

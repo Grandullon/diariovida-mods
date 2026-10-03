@@ -1,0 +1,3 @@
+{ "name": "papelera", "version": "1.0.0",
+  "description": "Cuando Claude va a borrar algo, en vez de borrarlo lo manda a una papelera (~/.papelera-claude) para que puedas recuperarlo. /papelera te enseña qué hay dentro.",
+  "author": { "name": "Paco Vida · diariovida.com" } }
