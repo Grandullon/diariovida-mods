@@ -9,6 +9,11 @@
   },
   "plugins": [
     {
+      "name": "mis-reglas",
+      "source": "./plugins/mis-reglas",
+      "description": "Tu Claude se ve distinto: franja con tus reglas activas y el «pensando» en español"
+    },
+    {
       "name": "en-cristiano",
       "source": "./plugins/en-cristiano",
       "description": "Explica en español normal cada cosa que hace Claude"

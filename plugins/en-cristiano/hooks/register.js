@@ -70,9 +70,22 @@ function traduce(tool, input) {
   }
 }
 
+let activo = true
+
 export function register(on) {
+  on('session.start', async ($, e, next) => {
+    await $.command.register({ name: 'cristiano', description: 'Activa o desactiva las explicaciones en español de lo que hace Claude' })
+    return next(e)
+  })
+  on('command.run', { command: 'cristiano' }, async ($) => {
+    activo = !activo
+    $.ui.invalidate('ui.render')
+    return { text: activo ? '💬 Explicaciones en cristiano ACTIVADAS' : '💬 Explicaciones en cristiano desactivadas' }
+  })
+
   on('ui.render', { component: 'ToolUse' }, async ($, e, next) => {
     const suyo = await next(e)
+    if (!activo) return suyo
     let linea
     try { linea = traduce(e.props.tool, e.props.input) + (e.props.isErrored ? '   ❌ (no se hizo)' : '') } catch { return suyo }
     const { Box, Text } = $.ui.resolve(e)
@@ -82,7 +95,7 @@ export function register(on) {
   // Cuando Claude Code agrupa varias acciones en una sola línea, explica cada una debajo
   on('ui.render', { component: 'ToolGroup' }, async ($, e, next) => {
     const suyo = await next(e)
-    if (e.props.isExpanded) return suyo
+    if (!activo || e.props.isExpanded) return suyo
     const calls = (e.props.calls || []).slice(0, 8)
     if (!calls.length) return suyo
     const { Box, Text } = $.ui.resolve(e)

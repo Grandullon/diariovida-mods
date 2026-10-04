@@ -1,0 +1,1 @@
+{ "description": "Mis reglas: franja y palabras en español", "modules": ["./register.js"] }
